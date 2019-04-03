@@ -20,20 +20,32 @@
     };
 
     //This is the game
-    var computerSelection = computerPlay();
-    var playerSelection = playerChoise();
-    function playRound(computerSelection,playerSelection) {
-        if (playerSelection == 'rock' && computerSelection == 'scissors' || playerSelection == 'scissors' && computerSelection == 'paper' || playerSelection == 'paper' && computerSelection == 'rock' ) {
-            alert('You won');
-        } else if (playerSelection == computerSelection) {
-            alert("Draw");
+    var rounds = 0;
+    var computerScore = 0;
+    var playerScore = 0;
 
-        } else {alert('You lose');}
 
-    };
+    function game() {
+        while (rounds < 5) {
+        var computerSelection = computerPlay();
+        var playerSelection = playerChoise();
+        function playRound(computerSelection,playerSelection) {
+            if (playerSelection == 'rock' && computerSelection == 'scissors' || playerSelection == 'scissors' && computerSelection == 'paper' || playerSelection == 'paper' && computerSelection == 'rock' ) {
+                ++playerScore; alert(`You won. You: ${playerScore} / PC: ${computerScore}`);
+                
+            } else if (playerSelection == computerSelection) {
+                alert(`Draw. You: ${playerScore} / PC: ${computerScore}`);
 
-    console.log(playRound(computerSelection,playerSelection));
+            } else {++computerScore; alert(`You lose. You: ${playerScore} / PC: ${computerScore}`);
+                }
 
+        };
+
+        console.log(playRound(computerSelection,playerSelection));
+        rounds ++;}
+        };
+
+        game();
 
 </script>
 </html>
